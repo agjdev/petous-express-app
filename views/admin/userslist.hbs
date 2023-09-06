@@ -1,0 +1,37 @@
+<h1 class="h3 mb-4 text-gray-800">User List : {{count}}</h1>
+
+
+    <table class="table">
+    <thead>
+
+     
+      <tr>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Role</th>
+        <th>Block/UnBlock</th>
+ 
+    
+      </tr>
+
+    </thead>
+    <tbody>
+         {{#each users}}
+      
+      <tr>
+        <td>{{this.name}}</td>
+          <td>{{this.email}}</td>
+        <td>{{this.mobile}}</td>
+        <td>{{this.role}}</td>
+        <td>Block </td>
+       
+
+      </tr>
+      {{/each}}
+
+  
+   
+    </tbody>
+  </table>
+

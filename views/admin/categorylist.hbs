@@ -1,0 +1,27 @@
+   <h1 class="h3 mb-4 text-gray-800">Category List</h1>
+
+
+    <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Category Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+
+     {{#each category}}
+<tr>
+    <td>{{@index}}</td>    
+    <td>{{this.name}}</td>
+    <td>Edit</td>
+    <td>Delete</td>
+</tr>
+{{/each}}
+
+   
+   
+    </tbody>
+  </table>

@@ -1,0 +1,142 @@
+const express = require("express");
+const mongoose = require("mongoose");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+
+const app = express();
+
+// Connect to MongoDB
+mongoose.connect("mongodb://localhost:27017/shoppingcart", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
+// Define a schema for the Book
+const bookSchema = new mongoose.Schema({
+  petname: {
+    type: String,
+    required: true
+  },
+  breed: {
+    type: String,
+    required: true
+  },
+  category: {
+    type: mongoose.Schema.Types.String,
+    ref: "Category",
+    required: true
+  },
+  color: {
+    type: String,
+    required: true
+  },
+  stock: {
+    type: Number,
+    required: true
+  },
+  age: {
+    type: Number,
+    required: true
+  },
+  price: {
+    type: Number,
+    required: true
+  },
+  city: {
+    type: String,
+    required: true
+  },
+  image: {
+    type: Buffer,
+    required: true
+  }
+});
+
+// Create a model from the schema
+const Book = mongoose.model("Book", bookSchema);
+
+// Define a schema for the cart
+const cartSchema = new mongoose.Schema({
+  userID: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  books: [
+    {
+      bookID: { type: mongoose.Schema.Types.ObjectId, ref: "Book" },
+      quantity: { type: Number, required: true },
+      price: { type: Number, required: true }
+    }
+  ]
+});
+
+// Create a model from the schema
+const Cart = mongoose.model("Cart", cartSchema);
+
+// Add to cart
+app.post("/cart", async (req, res) => {
+  const userID = req.user._id; // Assumes user is authenticated
+  const bookID = req.body.bookID;
+  const quantity = req.body.quantity;
+  const price = req.body.price;
+
+  try {
+    // Check if cart already exists for the user
+    let cart = await Cart.findOne({ userID: userID });
+
+    if (cart) {
+      // Cart already exists, add book to it
+      cart.books.push({ bookID: bookID, quantity: quantity, price: price });
+      await cart.save();
+    } else {
+      // Cart does not exist, create a new one
+      cart = new Cart({
+        userID: userID,
+        books: [{ bookID: bookID, quantity: quantity, price: price }]
+      });
+
+      await cart.save();
+    }
+
+    res.send({ success: true, message: "Book added to cart successfully" });
+  } catch (error) {
+    res.status(500).send
+
+
+
+
+
+
+
+    ---------------------
+
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Cart</title>
+  </head>
+  <body>
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each items}}
+          <tr>
+            <td>{{name}}</td>
+            <td>{{quantity}}</td>
+            <td>{{price}}</td>
+            <td>{{price * quantity}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <scr

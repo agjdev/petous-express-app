@@ -1,0 +1,42 @@
+   <h1 class="h3 mb-4 text-gray-800">Pet List</h1>
+
+
+    <table class="table">
+    <thead>
+      <tr>
+        <th>Pet Name</th>
+        <th>Breed</th>
+        <th>Color</th>
+        <th>Age</th>
+        <th>Stock</th>
+        <th>Category</th>
+        <th>City</th>
+        <th>Price</th>
+        <th>Image</th>
+        <th>Edit / Delete</th>
+    
+      </tr>
+    </thead>
+    <tbody>
+        {{#each bookings}}
+      <tr>
+        <td>{{this.petname}}</td>
+          <td>{{this.breed}}</td>
+        <td>{{this.color}}</td>
+        <td>{{this.age}}</td>
+        <td>{{this.stock}} </td>
+          <td>{{this.category}} </td>
+
+        <td>{{this.city}}</td>
+        <td>{{this.price}}</td>
+        <td><img src="{{this.image}}" class="img-fluid" style="width:32;height:32;"></td>
+        <td>E / D</td>
+     
+      
+      </tr>
+
+      {{/each}}
+   
+    </tbody>
+  </table>
+

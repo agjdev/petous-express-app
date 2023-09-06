@@ -1,0 +1,98 @@
+   {{>banner}}
+
+
+
+    <!-- ======= Adoption Section ======= -->
+    <section id="features" class="features">
+      <div class="container">
+
+
+        <div class="section-title">
+          <h2 class="display-3">Buy Your Favourite Pet </h2>
+
+		
+</div>
+  
+
+<div class="row d-flex justify-content-center">
+<div class="col-sm-2 mx-auto ">
+
+ 
+<select class="form-control border-0 " id="sel1">
+    <option selected >Filter By Category</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+  </select>
+</div>
+</div>
+
+
+		  
+
+		  
+		  
+   
+
+    
+		
+		<div class="row pt-5">
+
+      {{#each bookings }}
+
+		
+		
+			<div class="col-md-4 mb-3">
+		
+		<div class="card">
+  <img class="card-img-top" src="/public/petuploads/{{this.image}}.jpg" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{this.petname}} </h5>
+		<ul class="list-inline">
+  <li class="list-inline-item">Breed : {{this.breed}}</li>
+  <li class="list-inline-item">Category : {{this.category}}</li>
+  <li class="list-inline-item">Age : {{this.age}}</li>
+  <li class="list-inline-item">Stock : {{this.stock}}</li>
+    <li class="list-inline-item"><strong>&#8377;{{this.price}}</strong> </li>
+  
+</ul>
+
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		<ul class="list-inline ">
+   
+
+ <li class="list-inline-item  pt-3">
+ 
+
+   <a href="/add-to-cart/{{this._id}}" id="bot" role="button" class="btn btn-default" title="Add to cart"><i class="bi bi-cart-check"></i> Add to cart </a>
+   
+   </li>
+
+
+
+
+</ul>
+
+  </div>
+</div>
+		
+		
+		
+		
+		
+		</div><!--col-4-->
+
+    {{/each}}
+		
+		
+		
+		
+		</div>
+
+    
+
+      </div>
+    </section><!-- End adoption booking Section -->
+
+
+   {{>homecontent}}

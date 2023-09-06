@@ -1,0 +1,84 @@
+{{>bread}}
+    
+    <section class="inner-page">
+      <div class="container">
+         <div class="row ">
+		  <div class="col-lg-6">
+		  
+		  <img src="/assets/img/dr.png" class="img-fluid">
+		  <br>
+		  
+		  
+
+		  
+		   </div>
+		  
+		  
+		 
+		 <div class="col-lg-6 mt-3">
+		 
+		 <h3>Login </h3>
+
+     <div class="alert alert-default">
+    {{mg}}
+     </div>
+		 
+		 <form action="/auth/login" method="POST">
+     <input type="hidden" name="_csrf" value="{{csrfToken}}">
+		 {{!-- <div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" >
+  <label class="form-check-label" for="flexSwitchCheckChecked">Veterinary</label>
+</div> --}}
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example1">Email address</label>
+    <input type="email" id="form2Example1" name="email" class="form-control" />
+
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+     <label class="form-label" for="form2Example2">Password</label>
+    <input type="password" id="form2Example2" name="password" class="form-control" />
+ 
+  </div>
+
+  <!-- 2 column grid layout for inline styling -->
+  <div class="row mb-4">
+    <div class="col d-flex justify-content">
+      <!-- Checkbox -->
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+        <label class="form-check-label" for="form2Example31"> Remember me </label>
+      </div>
+    </div>
+
+    <div class="col">
+      <!-- Simple link -->
+      <a href="#!">Forgot password?</a>
+    </div>
+  </div>
+
+  <!-- Submit button -->
+  <button type="submit" id="bot" class="btn btn-default btn-block mb-4">Login</button>
+
+  <!-- Register buttons -->
+  <div class="text-center">
+    <p>Not a member? <a href="/auth/register">Register</a></p>
+    <p>or Login with OTP:</p>
+  
+    <button type="submit" id="bot" data-toggle="modal" data-target="#myModal" class="btn btn-link btn-floating mx-1 text-decoration-none">
+      <i class="bi bi-phone"></i> OTP Login
+    </button>
+  </div>
+</form>
+		 
+	
+		 
+		       </div>
+			   
+			    </div>
+	   
+      </div>
+    </section>
+  

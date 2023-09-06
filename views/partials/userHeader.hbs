@@ -1,0 +1,65 @@
+<header id="header" class="fixed-top  header-transparent ">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <a href="/"><img src="/assets/img/logo.png" alt="" class="img-fluid"></a>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+            {{#if user}}
+
+              
+
+                
+                    <li><a class="nav-link scrollto" href="/u/dashboard">Dashboard</a></li>
+                    <li><a class="nav-link scrollto" href="/shopping-cart">
+                      <i class="bi bi-cart-check"></i> &nbsp; Cart 
+                      <span class="badge badge-secondary text-success">{{session.cart.totalQty}}</span>
+                    </a></li>
+              
+
+            <div class="dropdown">
+                <a
+                  class="dropdown-toggle d-flex align-items-center hidden-arrow"
+                  href="#"
+                  id="navbarDropdownMenuAvatar"
+                  role="button"
+                  data-mdb-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                    class="rounded-circle"
+                    height="25"
+                    alt="Black and White Portrait of a Man"
+                    loading="lazy"
+                  /> 
+                  {{name}}
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-end"
+                  aria-labelledby="navbarDropdownMenuAvatar"
+                >
+                  <li>
+                    <a class="dropdown-item" href="#">Profile </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Settings</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/auth/logout">Logout</a>
+                  </li>
+                </ul>
+              </div>
+            {{else}}
+            
+                <li><a class="nav-link scrollto" href="/">Pet Store</a></li>
+                <li><a class="nav-link scrollto" href="/vet">Find Vet</a></li>
+                <li><a class="getstarted scrollto" href="/auth/login">Login / Register</a></li>
+            {{/if}}
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
